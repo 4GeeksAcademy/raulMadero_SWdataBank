@@ -6,7 +6,7 @@ const CharacterList = () => {
         <Container className="container-lg">
             <h2 className="text-danger">Characters</h2>
             <Card style={{width: '400px'}}>
-                <div className="text-center bg-secondary" style={{width: '400px', height: '200px'}}>400 x 200</div>
+                <div className="text-center text-dark bg-secondary" style={{width: '400px', height: '200px'}}>400 x 200</div>
                 <CardBody>
                     <CardTitle>Luke Skywalker</CardTitle>
                     <CardText>
