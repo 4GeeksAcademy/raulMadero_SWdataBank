@@ -10,6 +10,9 @@ const CharacterList = () => {
     const handleClick = (type, name) => {
         actions.addFavourites(type, name)
     }
+    const handleInfo = (name) => {
+        
+    }
     return (
         <>
             <h2 className="text-danger">Characters</h2>
@@ -26,7 +29,7 @@ const CharacterList = () => {
                                     <li>Eye Color: {character.eye_color}</li>
                                 </ul>
                             </CardText>
-                            <Link to={"/character"} className="btn btn-primary">More info</Link>
+                            <Button variant="primary" onClick={() => handleInfo(character.name)}>More info</Button>
                             <Button onClick={(e) => handleClick("people", character.name)} variant="outline-alert"><FontAwesomeIcon icon={faHeart} /></Button>
                         </CardBody>
                     </Card>

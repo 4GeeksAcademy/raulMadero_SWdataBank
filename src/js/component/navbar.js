@@ -8,6 +8,7 @@ export const Header = () => {
 	let favourites = []
 	const handleFav = () => {
 		favourites = store.favourites
+		console.log(favourites)
 	}
 	return (
 		<Navbar expand="lg" className="bg-tertiary">
