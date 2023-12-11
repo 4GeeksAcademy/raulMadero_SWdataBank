@@ -29,7 +29,24 @@ const injectContext = PassedComponent => {
 				console.log(error)
 			}
 		}
-
+		const getVehicles = async () => {
+			try {
+				const res = await fetch('https://www.swapi.tech/api/vehicles')
+				const vehicle = await res.json()
+				state.actions.setVehicles(vehicle)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+		const getPlanets = async () => {
+			try {
+				const res = await fetch('https://www.swapi.tech/api/planets')
+				const planet = await res.json()
+				state.actions.setPlanets(planet)
+			} catch (error) {
+				console.log(error)
+			}
+		}
 		useEffect(() => {
 			/**
 			 * EDIT THIS!
@@ -41,6 +58,8 @@ const injectContext = PassedComponent => {
 			 *
 			 **/
 			getCharacters()
+			getVehicles()
+			getPlanets()
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
