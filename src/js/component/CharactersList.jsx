@@ -1,24 +1,32 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Card, CardBody, CardImg, CardText, CardTitle, Container } from "react-bootstrap"
+import { Context } from "../store/appContext"
 
 const CharacterList = () => {
+    const {store, actions} = useContext(Context)
     return (
-        <Container className="container-lg">
+        <>
             <h2 className="text-danger">Characters</h2>
-            <Card style={{width: '400px'}}>
-                <div className="text-center text-dark bg-secondary" style={{width: '400px', height: '200px'}}>400 x 200</div>
-                <CardBody>
-                    <CardTitle>Luke Skywalker</CardTitle>
-                    <CardText>
-                        <ul>
-                            <li>Gender: </li>
-                            <li>Hair Color:</li>
-                            <li>Eye Color:</li>
-                        </ul>
-                    </CardText>
-                </CardBody>
-            </Card>
-        </Container>
+            <div className="d-flex flex-wrap overflow-auto">
+                {store.characters.map((character, key) => (
+                    <Card className="m-2" key={key} style={{width: '200px'}}>
+                        <div className="text-center text-dark bg-secondary">400 x 200</div>
+                        <CardBody>
+                            <CardTitle>{character.name}</CardTitle>
+                            <CardText>
+                                <ul>
+                                    <li>Gender: {character.gender}</li>
+                                    <li>Hair Color: {character.hair_color}</li>
+                                    <li>Eye Color: {character.eye_color}</li>
+                                </ul>
+                            </CardText>
+                        </CardBody>
+                    </Card>
+                ))}
+            
+            </div>
+        </>
+        
     )
 }
 

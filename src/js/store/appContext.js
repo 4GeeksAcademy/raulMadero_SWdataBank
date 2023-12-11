@@ -20,6 +20,15 @@ const injectContext = PassedComponent => {
 					})
 			})
 		);
+		const getCharacters = async () => {
+			try {
+				const res = await fetch('https://www.swapi.tech/api/people')
+				const char = await res.json()
+				state.actions.setCharacters(char)
+			} catch (error) {
+				console.log(error)
+			}
+		}
 
 		useEffect(() => {
 			/**
@@ -31,6 +40,7 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
+			getCharacters()
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
