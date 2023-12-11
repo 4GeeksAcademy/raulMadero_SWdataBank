@@ -1,17 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Container, Navbar, NavbarBrand, NavDropdown, Image } from "react-bootstrap";
+import logo from "../../img/sw.png"
 
-export const Navbar = () => {
+export const Header = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
-			</div>
-		</nav>
+		<Navbar expand="lg" className="bg-tertiary">
+			<Container>
+				<NavbarBrand>
+					<Image src={logo} alt="Star Wars Logo" width={150} height={100}/>
+				</NavbarBrand>
+				<NavDropdown title="Dropdown" id="basic-navbar-dropdown">
+					<NavDropdown.Item></NavDropdown.Item>
+				</NavDropdown>
+			</Container>
+		</Navbar>
 	);
 };
