@@ -2,7 +2,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			characters: [],
-			vehicles: [],
 			planets: [],
 			favourites: [],
 			character: {},
@@ -19,16 +18,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const store = getStore()
 					newCharacters.push(character.result.properties)
 					setStore({characters: newCharacters})					
-				}
-			},
-			setVehicles: async (data) => {
-				const newVehicles = []
-				for (let i = 4; i < data.results.length; i++) {
-					const element = await fetch(`https://www.swapi.tech/api/vehicles/${i}`);
-					const vehicles = await element.json()
-					const store = getStore()
-					newVehicles.push(vehicles.result.properties)
-					setStore({vehicles: newVehicles})					
 				}
 			},
 			setPlanets: async (data) => {
@@ -48,7 +37,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore()
 				const newFav = store.favourites.concat(fav.result[0].properties)
 				setStore({favourites: newFav})
-				console.log(store.favourites)
+			},
+			deleteFav: (idToDelete) => {
+				const store = getStore()
+				const updateFav = store.favourites.filter((_, currentIndex) => idToDelete !== currentIndex)
+				setStore({favourites: updateFav})
 			},
 			getCharacter: async (name) => {
 				const element = await fetch(`https://www.swapi.tech/api/people?name=${name}`)
@@ -56,21 +49,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore()
 				setStore({character: char.result[0].properties})
 			},
-			getVehicle: async (name) => {
-				const element = await fetch(`https://www.swapi.tech/api/vehicles?name=${name}`)
-				const vehicle = await element.json()
-				console.log(char.result[0].properties)
-				const store = getStore()
-				setStore({vehicle: vehicle.result[0].properties})
-				console.log(store.vehicle)
-			},
 			getPlanet: async (name) => {
 				const element = await fetch(`https://www.swapi.tech/api/planets?name=${name}`)
 				const planet = await element.json()
 				console.log(planet.result[0].properties)
 				const store = getStore()
 				setStore({planet: planet.result[0].properties})
-				console.log(store.planet)
+				console.log(store)
 			}
 		}
 	}

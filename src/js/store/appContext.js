@@ -29,15 +29,6 @@ const injectContext = PassedComponent => {
 				console.log(error)
 			}
 		}
-		const getVehicles = async () => {
-			try {
-				const res = await fetch('https://www.swapi.tech/api/vehicles')
-				const vehicle = await res.json()
-				state.actions.setVehicles(vehicle)
-			} catch (error) {
-				console.log(error)
-			}
-		}
 		const getPlanets = async () => {
 			try {
 				const res = await fetch('https://www.swapi.tech/api/planets')
@@ -58,7 +49,6 @@ const injectContext = PassedComponent => {
 			 *
 			 **/
 			getCharacters()
-			getVehicles()
 			getPlanets()
 		}, []);
 

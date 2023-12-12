@@ -7,6 +7,12 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons"
 
 const PlanetList = () => {
     const {store, actions} = useContext(Context)
+    const handleInfo = (name) => {
+        actions.getPlanet(name)
+    }
+    const handleClick = (type, name) => {
+        actions.addFavourites(type, name)
+    }
     return (
         <>
             <h2 className="text-danger">Planets</h2>
