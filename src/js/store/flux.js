@@ -23,11 +23,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			setVehicles: async (data) => {
 				const newVehicles = []
-				for (let i = 1; i < data.results.length; i++) {
-					const element = await fetch(`https://www.swapi.tech/api/people/${i}`);
-					const character = await element.json()
+				for (let i = 4; i < data.results.length; i++) {
+					const element = await fetch(`https://www.swapi.tech/api/vehicles/${i}`);
+					const vehicles = await element.json()
 					const store = getStore()
-					newVehicles.push(character.result.properties)
+					newVehicles.push(vehicles.result.properties)
 					setStore({vehicles: newVehicles})					
 				}
 			},
@@ -53,13 +53,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getCharacter: async (name) => {
 				const element = await fetch(`https://www.swapi.tech/api/people?name=${name}`)
 				const char = await element.json()
-				console.log(char.result[0].properties)
 				const store = getStore()
 				setStore({character: char.result[0].properties})
-				console.log(store.character)
 			},
 			getVehicle: async (name) => {
-				const element = await fetch(`https://www.swapi.tech/api/people?name=${name}`)
+				const element = await fetch(`https://www.swapi.tech/api/vehicles?name=${name}`)
 				const vehicle = await element.json()
 				console.log(char.result[0].properties)
 				const store = getStore()
@@ -67,7 +65,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(store.vehicle)
 			},
 			getPlanet: async (name) => {
-				const element = await fetch(`https://www.swapi.tech/api/people?name=${name}`)
+				const element = await fetch(`https://www.swapi.tech/api/planets?name=${name}`)
 				const planet = await element.json()
 				console.log(planet.result[0].properties)
 				const store = getStore()

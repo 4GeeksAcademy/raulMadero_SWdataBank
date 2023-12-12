@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Button, Card, CardBody, CardImg, CardText, CardTitle, Container } from "react-bootstrap"
+import { Button, Card, CardBody, CardText, CardTitle } from "react-bootstrap"
 import { Context } from "../store/appContext"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -11,7 +11,7 @@ const CharacterList = () => {
         actions.addFavourites(type, name)
     }
     const handleInfo = (name) => {
-        
+        actions.getCharacter(name)
     }
     return (
         <>
@@ -29,7 +29,7 @@ const CharacterList = () => {
                                     <li>Eye Color: {character.eye_color}</li>
                                 </ul>
                             </CardText>
-                            <Button variant="primary" onClick={() => handleInfo(character.name)}>More info</Button>
+                            <Link to={"/character"} className="btn btn-primary" onClick={() => handleInfo(character.name)}>More info</Link>
                             <Button onClick={(e) => handleClick("people", character.name)} variant="outline-alert"><FontAwesomeIcon icon={faHeart} /></Button>
                         </CardBody>
                     </Card>

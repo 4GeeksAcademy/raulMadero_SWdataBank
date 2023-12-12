@@ -1,6 +1,9 @@
 import React, { useContext } from "react"
-import { Card, CardBody, CardImg, CardText, CardTitle, Container } from "react-bootstrap"
+import { Card, CardBody, CardText, CardTitle, Button } from "react-bootstrap"
 import { Context } from "../store/appContext"
+import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHeart } from "@fortawesome/free-solid-svg-icons"
 
 const VehiclesList = () => {
     const {store, actions} = useContext(Context)
@@ -20,6 +23,8 @@ const VehiclesList = () => {
                                     <li>Class: {vehicle.vehicle_class}</li>
                                 </ul>
                             </CardText>
+                            <Link to={"/vehicle"} className="btn btn-primary" onClick={() => handleInfo(vehicle.name)}>More info</Link>
+                            <Button onClick={(e) => handleClick("vehicles", vehicle.name)} variant="outline-alert"><FontAwesomeIcon icon={faHeart} /></Button>
                         </CardBody>
                     </Card>
                 ))}
