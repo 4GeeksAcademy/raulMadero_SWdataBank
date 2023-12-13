@@ -7,8 +7,8 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons"
 
 const PlanetList = () => {
     const {store, actions} = useContext(Context)
-    const handleInfo = (name) => {
-        actions.getPlanet(name)
+    const handleInfo = (name, index) => {
+        actions.getPlanet(name, index)
     }
     const handleClick = (type, name) => {
         actions.addFavourites(type, name)
@@ -29,7 +29,7 @@ const PlanetList = () => {
                                     <li>Gravity: {planet.gravity}</li>
                                 </ul>
                             </CardText>
-                            <Link to={"/planet"} className="btn btn-primary" onClick={() => handleInfo(planet.name)}>More info</Link>
+                            <Link to={"/planet"} className="btn btn-primary" onClick={() => handleInfo(planet.name, key)}>More info</Link>
                             <Button onClick={(e) => handleClick("planets", planet.name)} variant="outline-alert"><FontAwesomeIcon icon={faHeart} /></Button>
                         </CardBody>
                     </Card>

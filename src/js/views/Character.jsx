@@ -1,6 +1,6 @@
 import React from "react"
 import { useContext } from "react"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Image } from "react-bootstrap"
 import { Context } from "../store/appContext"
 import { Link } from "react-router-dom"
 
@@ -11,7 +11,7 @@ const Character = () => {
             <Link to={"/"} className="btn btn-primary my-5">Home</Link>
             <Row>
                 <Col>
-                    <div className="bg-secondary" style={{width: "100%", height: "100%"}}></div>
+                    <Image src={`https://starwars-visualguide.com/assets/img/characters/${store.index + ".jpg"}`}/>
                 </Col>
                 <Col>
                     <h1>{store.character.name}</h1>

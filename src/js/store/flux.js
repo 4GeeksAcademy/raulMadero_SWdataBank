@@ -6,7 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favourites: [],
 			character: {},
 			vehicle: {},
-			planet: {}
+			planet: {},
+			index: ""
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -42,19 +43,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const updateFav = store.favourites.filter((_, currentIndex) => idToDelete !== currentIndex)
 				setStore({favourites: updateFav})
 			},
-			getCharacter: async (name) => {
+			getCharacter: async (name, index) => {
+				console.log(index)
 				const element = await fetch(`https://www.swapi.tech/api/people?name=${name}`)
 				const char = await element.json()
 				const store = getStore()
 				setStore({character: char.result[0].properties})
+				setStore({index: index + 1})
+				console.log(store.index)
 			},
-			getPlanet: async (name) => {
+			getPlanet: async (name, index) => {
 				const element = await fetch(`https://www.swapi.tech/api/planets?name=${name}`)
 				const planet = await element.json()
-				console.log(planet.result[0].properties)
 				const store = getStore()
 				setStore({planet: planet.result[0].properties})
-				console.log(store)
+				setStore({index: index + 1})
 			}
 		}
 	}

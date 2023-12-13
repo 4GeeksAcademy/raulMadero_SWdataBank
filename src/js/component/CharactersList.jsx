@@ -10,8 +10,8 @@ const CharacterList = () => {
     const handleClick = (type, name) => {
         actions.addFavourites(type, name)
     }
-    const handleInfo = (name) => {
-        actions.getCharacter(name)
+    const handleInfo = (name, index) => {
+        actions.getCharacter(name, index)
     }
     return (
         <>
@@ -29,7 +29,7 @@ const CharacterList = () => {
                                     <li>Eye Color: {character.eye_color}</li>
                                 </ul>
                             </CardText>
-                            <Link to={"/character"} className="btn btn-primary" onClick={() => handleInfo(character.name)}>More info</Link>
+                            <Link to={"/character"} className="btn btn-primary" onClick={() => handleInfo(character.name, key)}>More info</Link>
                             <Button onClick={(e) => handleClick("people", character.name)} variant="outline-alert"><FontAwesomeIcon icon={faHeart} /></Button>
                         </CardBody>
                     </Card>
