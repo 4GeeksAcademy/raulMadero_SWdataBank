@@ -33,12 +33,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addFavourites: async (type, name) => {
 				const element = await fetch(`https://www.swapi.tech/api/${type}?name=${name}`)
 				const fav = await element.json()
-				console.log(fav.result[0].properties)
 				const store = getStore()
 				const newFav = store.favourites.concat(fav.result[0].properties)
 				setStore({favourites: newFav})
 			},
-			deleteFav: (idToDelete) => {
+			removeFav: (idToDelete) => {
 				const store = getStore()
 				const updateFav = store.favourites.filter((_, currentIndex) => idToDelete !== currentIndex)
 				setStore({favourites: updateFav})

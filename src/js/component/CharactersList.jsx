@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Button, Card, CardBody, CardText, CardTitle } from "react-bootstrap"
+import { Button, Card, CardBody, CardImg, CardText, CardTitle } from "react-bootstrap"
 import { Context } from "../store/appContext"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -19,7 +19,7 @@ const CharacterList = () => {
             <div className="d-flex flex-wrap overflow-auto">
                 {store.characters.map((character, key) => (
                     <Card className="m-2" key={key} style={{width: '200px'}}>
-                        <div className="text-center text-dark bg-secondary">400 x 200</div>
+                        <CardImg variant="top" src={`https://starwars-visualguide.com/assets/img/characters/${(key + 1) + ".jpg"}`}/>
                         <CardBody>
                             <CardTitle>{character.name}</CardTitle>
                             <CardText>

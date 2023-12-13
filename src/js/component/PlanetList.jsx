@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Card, CardBody, CardText, CardTitle, Button } from "react-bootstrap"
+import { Card, CardBody, CardText, CardTitle, Button, CardImg, Image } from "react-bootstrap"
 import { Context } from "../store/appContext"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -19,7 +19,7 @@ const PlanetList = () => {
             <div className="d-flex flex-wrap overflow-auto">
                 {store.planets.map((planet, key) => (
                     <Card className="m-2" key={key} style={{width: '200px'}}>
-                        <div className="text-center text-dark bg-secondary">400 x 200</div>
+                        <CardImg variant="top" src={`https://starwars-visualguide.com/assets/img/planets/${(key + 1) + ".jpg"}`}/>
                         <CardBody>
                             <CardTitle>{planet.name}</CardTitle>
                             <CardText>
