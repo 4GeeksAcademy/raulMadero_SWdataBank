@@ -35,7 +35,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const element = await fetch(`https://www.swapi.tech/api/${type}?name=${name}`)
 				const fav = await element.json()
 				const store = getStore()
-				const newFav = store.favourites.concat(fav.result[0].properties)
+				console.log(fav)
+				const isAlreadyFavourite = store.favourites.some(item => item.name === fav.result[0].properties.name);
+				console.log(isAlreadyFavourite)
+				let newFav;
+				if (isAlreadyFavourite) {
+					newFav = store.favourites.filter(item => item.name !== fav.result[0].properties.name);
+				} else {
+					newFav = [...store.favourites, fav.result[0].properties];
+    			}
 				setStore({favourites: newFav})
 			},
 			removeFav: (idToDelete) => {

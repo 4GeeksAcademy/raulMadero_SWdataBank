@@ -19,7 +19,7 @@ const PlanetList = () => {
             <div className="d-flex flex-wrap overflow-auto">
                 {store.planets.map((planet, key) => (
                     <Card className="m-2" key={key} style={{width: '200px'}}>
-                        <CardImg variant="top" src={`https://starwars-visualguide.com/assets/img/planets/${(key + 1) + ".jpg"}`}/>
+                        <CardImg variant="top" src={key === 0 ? "https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png/revision/latest?cb=20131214162357" : `https://starwars-visualguide.com/assets/img/planets/${(key + 1) + ".jpg"}`}/>
                         <CardBody>
                             <CardTitle>{planet.name}</CardTitle>
                             <CardText>
